@@ -1,0 +1,43 @@
+name: Daily Coupang Hotdeal Update
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "10 0 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-hotdeal:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 저장소 가져오기
+        uses: actions/checkout@v4
+
+      - name: Python 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 필요한 프로그램 설치
+        run: pip install -r requirements.txt
+
+      - name: 오늘의 쿠팡 핫딜 만들기
+        env:
+          COUPANG_ACCESS_KEY: ${{ secrets.COUPANG_ACCESS_KEY }}
+          COUPANG_SECRET_KEY: ${{ secrets.COUPANG_SECRET_KEY }}
+        run: python coupang_hotdeal_v2.py
+
+      - name: 새 페이지를 홈페이지로 적용
+        run: cp hotdeal.html index.html
+
+      - name: 변경된 페이지 저장
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "auto update daily hotdeal"
+          git push
