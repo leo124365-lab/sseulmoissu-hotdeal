@@ -497,6 +497,20 @@ body {{
     font-size: 14px;
 }}
 
+.section-title {{
+    font-size: 22px;
+    font-weight: 900;
+    margin: 26px 0 6px;
+    letter-spacing: -0.4px;
+}}
+
+.section-desc {{
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0 0 14px;
+}}
+
 .notice {{
     background: #ffffff;
     padding: 12px;
@@ -513,6 +527,33 @@ body {{
     overflow: hidden;
     margin-bottom: 18px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.04);
+}}
+
+.card.featured {{
+    box-shadow: 0 7px 20px rgba(0,0,0,0.10);
+}}
+
+.card.rank-1 {{
+    border: 2px solid #111;
+}}
+
+.image-wrap {{
+    position: relative;
+}}
+
+.pick-badge {{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    background: #111;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 7px 10px;
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }}
 
 .product-image {{
@@ -546,7 +587,18 @@ body {{
     border-radius: 6px;
     padding: 5px 8px;
     font-size: 11px;
+    font-weight: 700;
     margin-right: 5px;
+}}
+
+.badge.rocket {{
+    background: #eaf3ff;
+    color: #1267d6;
+}}
+
+.badge.shipping {{
+    background: #edf8ef;
+    color: #237a3b;
 }}
 
 .price {{
@@ -554,6 +606,28 @@ body {{
     font-weight: 800;
     margin-top: 13px;
     margin-bottom: 13px;
+}}
+
+.extra-toggle {{
+    width: 100%;
+    border: 0;
+    background: #fff;
+    color: #111;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    margin: 8px 0 18px;
+}}
+
+.extra-products {{
+    display: none;
+}}
+
+.extra-products.open {{
+    display: block;
 }}
 
 .buy-button {{
