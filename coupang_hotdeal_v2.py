@@ -630,7 +630,7 @@ body {{
 </div>
 
 <script>
-function toggleExtra() {
+function toggleExtra() {{
     const box = document.getElementById("extraProducts");
     const btn = document.getElementById("extraToggle");
 
@@ -642,10 +642,10 @@ function toggleExtra() {
         ? "추가 특가 접기"
         : "추가 특가 더보기";
 
-    if (!isOpen) {
-        btn.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-}
+    if (!isOpen) {{
+        btn.scrollIntoView({{ behavior: "smooth", block: "center" }});
+    }}
+}}
 </script>
 
 </body>
