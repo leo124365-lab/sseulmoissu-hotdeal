@@ -331,24 +331,10 @@ for i, product in enumerate(content_products, start=1):
     )
 
 print()
-cards = ""
-for display_rank, product in enumerate(selected_products, start=1):
+top_cards = ""
+extra_cards = ""
 
-    if display_rank == 1:
-        cards += """
-        <div class="section-title">
-            오늘의 TOP 10
-        </div>
-        """
-    elif display_rank == 11:
-        cards += """
-        <div class="section-title extra">
-            골드박스 추가 특가
-        </div>
-        <div class="section-desc">
-            오늘 API에서 받은 상품 중 추가로 골라봤습니다.
-        </div>
-        """
+for display_rank, product in enumerate(selected_products, start=1):
 
     name = html.escape(str(product.get("productName", "")))
     category = html.escape(str(product.get("categoryName", "")))
@@ -369,19 +355,29 @@ for display_rank, product in enumerate(selected_products, start=1):
     badges = ""
 
     if rocket:
-        badges += '<span class="badge">로켓배송</span>'
+        badges += '<span class="badge rocket">로켓배송</span>'
 
     if free_shipping:
-        badges += '<span class="badge">무료배송</span>'
+        badges += '<span class="badge shipping">무료배송</span>'
 
-    cards += f"""
-    <div class="card">
+    pick_badge = ""
+    card_class = "card"
 
-        <img
-            src="{image}"
-            class="product-image"
-            alt="{name}"
-        >
+    if display_rank <= 3:
+        pick_badge = f'<span class="pick-badge">쓸모픽 #{display_rank}</span>'
+        card_class += f" featured rank-{display_rank}"
+
+    card_html = f"""
+    <div class="{card_class}">
+
+        <div class="image-wrap">
+            {pick_badge}
+            <img
+                src="{image}"
+                class="product-image"
+                alt="{name}"
+            >
+        </div>
 
         <div class="product-info">
 
@@ -414,6 +410,11 @@ for display_rank, product in enumerate(selected_products, start=1):
 
     </div>
     """
+
+    if display_rank <= 10:
+        top_cards += card_html
+    else:
+        extra_cards += card_html
 
 
 # =========================================================
@@ -581,7 +582,35 @@ body {{
     </div>
 
 
-    {cards}
+    <div class="section-title">
+        오늘의 TOP 10
+    </div>
+    <div class="section-desc">
+        골드박스 상품을 가격·배송·카테고리 기준으로 골라 정렬했습니다.
+    </div>
+
+    {top_cards}
+
+    {f"""
+    <button
+        class="extra-toggle"
+        type="button"
+        onclick="toggleExtra()"
+        id="extraToggle"
+    >
+        추가 특가 {len(extra_cards) and max(0, len(selected_products) - 10) or 0}개 더보기
+    </button>
+
+    <div class="extra-products" id="extraProducts">
+        <div class="section-title">
+            골드박스 추가 특가
+        </div>
+        <div class="section-desc">
+            오늘 API에서 받은 상품 중 11위 이후 후보입니다.
+        </div>
+        {extra_cards}
+    </div>
+    """ if extra_cards else ""}
 
 
     <div class="footer">
@@ -591,6 +620,25 @@ body {{
     </div>
 
 </div>
+
+<script>
+function toggleExtra() {
+    const box = document.getElementById("extraProducts");
+    const btn = document.getElementById("extraToggle");
+
+    if (!box || !btn) return;
+
+    const isOpen = box.classList.toggle("open");
+
+    btn.textContent = isOpen
+        ? "추가 특가 접기"
+        : "추가 특가 더보기";
+
+    if (!isOpen) {
+        btn.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+}
+</script>
 
 </body>
 
