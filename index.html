@@ -45,6 +45,20 @@ body {
     font-size: 14px;
 }
 
+.section-title {
+    font-size: 22px;
+    font-weight: 900;
+    margin: 26px 0 6px;
+    letter-spacing: -0.4px;
+}
+
+.section-desc {
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0 0 14px;
+}
+
 .notice {
     background: #ffffff;
     padding: 12px;
@@ -61,6 +75,33 @@ body {
     overflow: hidden;
     margin-bottom: 18px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.card.featured {
+    box-shadow: 0 7px 20px rgba(0,0,0,0.10);
+}
+
+.card.rank-1 {
+    border: 2px solid #111;
+}
+
+.image-wrap {
+    position: relative;
+}
+
+.pick-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    background: #111;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 7px 10px;
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
 }
 
 .product-image {
@@ -94,7 +135,18 @@ body {
     border-radius: 6px;
     padding: 5px 8px;
     font-size: 11px;
+    font-weight: 700;
     margin-right: 5px;
+}
+
+.badge.rocket {
+    background: #eaf3ff;
+    color: #1267d6;
+}
+
+.badge.shipping {
+    background: #edf8ef;
+    color: #237a3b;
 }
 
 .price {
@@ -102,6 +154,28 @@ body {
     font-weight: 800;
     margin-top: 13px;
     margin-bottom: 13px;
+}
+
+.extra-toggle {
+    width: 100%;
+    border: 0;
+    background: #fff;
+    color: #111;
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    margin: 8px 0 18px;
+}
+
+.extra-products {
+    display: none;
+}
+
+.extra-products.open {
+    display: block;
 }
 
 .buy-button {
@@ -170,7 +244,7 @@ body {
         <div class="image-wrap">
             <span class="pick-badge">쓸모픽 #1</span>
             <img
-                src="https://img4c.coupangcdn.com/image/vendor_inventory/6ebd/8aed94cc2dd61a2c6f7bfe0a54c0dcae67a94e6fc8c0c6a1b37ea7058e98.jpg"
+                src="https://image13.coupangcdn.com/image/vendor_inventory/6ebd/8aed94cc2dd61a2c6f7bfe0a54c0dcae67a94e6fc8c0c6a1b37ea7058e98.jpg"
                 class="product-image"
                 alt="[1+1 17L+20L]자동 센서 쓰레기통 화장실 쓰레기통 기저귀 냄새차단 휴지통"
             >
@@ -212,7 +286,7 @@ body {
         <div class="image-wrap">
             <span class="pick-badge">쓸모픽 #2</span>
             <img
-                src="https://img2c.coupangcdn.com/image/retail/images/71398767918130-b431ac05-41d7-466f-83e2-c4758d247341.jpg"
+                src="https://static.coupangcdn.com/image/vendor_inventory/3de0/a88acf635ed914af7e99a7efae85df633c80950197a16b287cb1fb7ac4bf.jpg"
                 class="product-image"
                 alt="제주삼다수 그린 무라벨"
             >
@@ -254,7 +328,7 @@ body {
         <div class="image-wrap">
             <span class="pick-badge">쓸모픽 #3</span>
             <img
-                src="https://image8.coupangcdn.com/image/retail/images/704893215543382-183fd7ca-cc8c-4620-a84b-cb45ab0dcab8.jpg"
+                src="https://image13.coupangcdn.com/image/retail/images/704893215543382-183fd7ca-cc8c-4620-a84b-cb45ab0dcab8.jpg"
                 class="product-image"
                 alt="코카콜라 제로제로"
             >
@@ -296,7 +370,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image15.coupangcdn.com/image/retail/images/80134522417823-7fac3412-c79f-42dc-af70-d28c83ebe312.jpg"
+                src="https://img5a.coupangcdn.com/image/retail/images/80134522417823-7fac3412-c79f-42dc-af70-d28c83ebe312.jpg"
                 class="product-image"
                 alt="탐사 도톰한 천연펄프 4겹 화장지"
             >
@@ -338,7 +412,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image12.coupangcdn.com/image/retail/images/105865941110791-e2bbd0f1-3648-4d46-b8c0-b4e867a28c51.jpg"
+                src="https://image2.coupangcdn.com/image/retail/images/105865941110791-e2bbd0f1-3648-4d46-b8c0-b4e867a28c51.jpg"
                 class="product-image"
                 alt="아이리스 국내생산 시스템 수납박스 대형 서랍장 BC-500D"
             >
@@ -380,7 +454,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image4.coupangcdn.com/image/vendor_inventory/image_audit/prod/37cb053b-9af5-44e6-822b-e3f6fc27245f_fixing_v2.png"
+                src="https://img5c.coupangcdn.com/image/vendor_inventory/image_audit/prod/37cb053b-9af5-44e6-822b-e3f6fc27245f_fixing_v2.png"
                 class="product-image"
                 alt="헬리코박터 프로젝트 윌 미니"
             >
@@ -422,7 +496,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://img2c.coupangcdn.com/image/vendor_inventory/553c/43a816123cedc1bb0967510689d71dd3ce9363a2fd017a35814d5a0a0c67.jpg"
+                src="https://image5.coupangcdn.com/image/vendor_inventory/553c/43a816123cedc1bb0967510689d71dd3ce9363a2fd017a35814d5a0a0c67.jpg"
                 class="product-image"
                 alt="키루에 의자 컴퓨터의자 책상의자 사무용의자푹신한 메쉬 의자"
             >
@@ -464,7 +538,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://img5c.coupangcdn.com/image/retail/images/2026/02/04/15/8/ab2f758a-ff8e-46fe-baf7-7df61cc6b9ae.jpg"
+                src="https://image6.coupangcdn.com/image/retail/images/2026/02/04/15/8/ab2f758a-ff8e-46fe-baf7-7df61cc6b9ae.jpg"
                 class="product-image"
                 alt="뉴발란스키즈 아동용 EXCLUSIVE_에센셜 긴팔티 NK9BGB999U"
             >
@@ -506,7 +580,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image3.coupangcdn.com/image/vendor_inventory/image_audit/stage/manual/fd5245cbb4710fe44bf56ae7446e8623320614ded2644dc3be0978cac547_1776647972386.jpg"
+                src="https://image5.coupangcdn.com/image/vendor_inventory/image_audit/stage/manual/fd5245cbb4710fe44bf56ae7446e8623320614ded2644dc3be0978cac547_1776647972386.jpg"
                 class="product-image"
                 alt="행복미트 프리미엄 소 스지 수육 탕 전골용"
             >
@@ -548,7 +622,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image2.coupangcdn.com/image/retail/images/2022/12/26/13/7/a41896be-d09a-48aa-b679-2588acddcc27.jpg"
+                src="https://image10.coupangcdn.com/image/retail/images/2022/12/26/13/7/a41896be-d09a-48aa-b679-2588acddcc27.jpg"
                 class="product-image"
                 alt="아디다스 슈필러 배드민턴 라켓 2p + 풀커버 세트"
             >
@@ -609,7 +683,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image14.coupangcdn.com/image/retail/images/242512331944865-7b23e22e-6c30-41f1-91ec-dba67aec2787.jpg"
+                src="https://image8.coupangcdn.com/image/retail/images/242512331944865-7b23e22e-6c30-41f1-91ec-dba67aec2787.jpg"
                 class="product-image"
                 alt="마더스홈 메모리폼 발매트"
             >
@@ -651,7 +725,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://img2c.coupangcdn.com/image/retail/images/2025/02/07/11/7/e5e245f1-005c-4577-83ab-be7f389eb564.jpg"
+                src="https://image14.coupangcdn.com/image/retail/images/2025/02/07/11/7/e5e245f1-005c-4577-83ab-be7f389eb564.jpg"
                 class="product-image"
                 alt="뷰카 센트 클래식 대용량 디퓨저"
             >
@@ -693,7 +767,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://img4c.coupangcdn.com/image/vendor_inventory/c1fc/ff80b276ce0a1c7074e4c936216ba40cc13242b19bae79f4a74c31a1ad7f.jpg"
+                src="https://image12.coupangcdn.com/image/vendor_inventory/c1fc/ff80b276ce0a1c7074e4c936216ba40cc13242b19bae79f4a74c31a1ad7f.jpg"
                 class="product-image"
                 alt="맘스럽 퍼팩트 캡슐세제 4챔버 파우치형 국산제조 8배 초고농축 4in1 대용량 실내건조"
             >
@@ -735,7 +809,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image13.coupangcdn.com/image/vendor_inventory/dde6/8218f4bbab2fcf8a6e2ea022f206cc320e33be32145e6ccd67d5bda9e2b5.png"
+                src="https://image4.coupangcdn.com/image/vendor_inventory/dde6/8218f4bbab2fcf8a6e2ea022f206cc320e33be32145e6ccd67d5bda9e2b5.png"
                 class="product-image"
                 alt="[서귀포농장직판] 11brix 당도선별 귤 제주 감귤 초특가"
             >
@@ -777,7 +851,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image2.coupangcdn.com/image/retail/images/2162976441778628-68a5030c-f4e5-4882-a514-7f5c2ca27518.jpg"
+                src="https://img3c.coupangcdn.com/image/retail/images/2162976441778628-68a5030c-f4e5-4882-a514-7f5c2ca27518.jpg"
                 class="product-image"
                 alt="마이키즈 정품 초코맛"
             >
@@ -819,7 +893,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image9.coupangcdn.com/image/vendor_inventory/5bbd/1c9f1af1645431da7a4c64308f1e1ec9b74746dee8965880421d1065c0a4.jpg"
+                src="https://img5a.coupangcdn.com/image/vendor_inventory/5bbd/1c9f1af1645431da7a4c64308f1e1ec9b74746dee8965880421d1065c0a4.jpg"
                 class="product-image"
                 alt="하늘보리 유기농 차"
             >
@@ -903,7 +977,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://img5a.coupangcdn.com/image/retail/images/2025/10/27/14/8/0fa76b42-9fb2-4f05-b84b-1a4617461c91.jpg"
+                src="https://image11.coupangcdn.com/image/retail/images/2025/10/27/14/8/0fa76b42-9fb2-4f05-b84b-1a4617461c91.jpg"
                 class="product-image"
                 alt="캉골 레트로코어 스탠다드 스플릿 백팩 1471"
             >
@@ -945,7 +1019,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image13.coupangcdn.com/image/rs_quotation_api/m3u4ohjt/a8e47258982b4344a164b1f8c4bd4255.jpg"
+                src="https://img1c.coupangcdn.com/image/rs_quotation_api/m3u4ohjt/a8e47258982b4344a164b1f8c4bd4255.jpg"
                 class="product-image"
                 alt="영어놀이 아기상어펜"
             >
@@ -987,7 +1061,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image3.coupangcdn.com/image/rs_quotation_api/vc9urbaq/aaf889582407409e884edcd81e8cbd6b.jpg"
+                src="https://img5a.coupangcdn.com/image/rs_quotation_api/vc9urbaq/aaf889582407409e884edcd81e8cbd6b.jpg"
                 class="product-image"
                 alt="그린모먼트랩 목주름 케어 경추베개 울플렉스 양모 필로우"
             >
@@ -1029,7 +1103,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://img4a.coupangcdn.com/image/retail/images/92987015051084-1518df72-484c-4e78-9ab7-bc0077da5ea5.jpg"
+                src="https://static.coupangcdn.com/image/retail/images/92987015051084-1518df72-484c-4e78-9ab7-bc0077da5ea5.jpg"
                 class="product-image"
                 alt="PN풍년 하이클래드 파워 IH 압력솥 10인용"
             >
@@ -1071,7 +1145,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image14.coupangcdn.com/image/rs_quotation_api/jovchmuo/cd0f99a6494446ceb0d5550a93b708e3.jpg"
+                src="https://image11.coupangcdn.com/image/rs_quotation_api/jovchmuo/cd0f99a6494446ceb0d5550a93b708e3.jpg"
                 class="product-image"
                 alt="레이디가구 몬스터 컴피 유로탑 고탄성폼 독립 스프링 매트리스 방문설치"
             >
@@ -1113,7 +1187,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image5.coupangcdn.com/image/rs_quotation_api/gr8fmgqu/657009b0ceca4a02aba292d23f05a944.jpg"
+                src="https://image15.coupangcdn.com/image/rs_quotation_api/gr8fmgqu/657009b0ceca4a02aba292d23f05a944.jpg"
                 class="product-image"
                 alt="더국민 돌자반 볶음"
             >
@@ -1197,7 +1271,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://image13.coupangcdn.com/image/travel_reactor/travelSeller/common/A00186691/f88d1edc-3a60-4631-b82e-3bdfd8dbe3a7.jpg"
+                src="https://img2c.coupangcdn.com/image/travel_reactor/travelSeller/common/A00186691/f88d1edc-3a60-4631-b82e-3bdfd8dbe3a7.jpg"
                 class="product-image"
                 alt="★골드박스/한정수량★ 제주올패스 24시간 이용권 &lt;201372&gt;"
             >
@@ -1239,7 +1313,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://static.coupangcdn.com/image/retail/images/389050355945635-99039d76-c867-44c6-a442-97e5494a8811.jpg"
+                src="https://image14.coupangcdn.com/image/retail/images/389050355945635-99039d76-c867-44c6-a442-97e5494a8811.jpg"
                 class="product-image"
                 alt="베이스알파 에센셜 여성용 하프 골지 무지 양말 10켤레"
             >
@@ -1281,7 +1355,7 @@ body {
         <div class="image-wrap">
             
             <img
-                src="https://img5a.coupangcdn.com/image/travel_reactor/travelSeller/common/A00221268/f24516fc-7a84-4a5a-a900-a16629b786a8.jpg"
+                src="https://image8.coupangcdn.com/image/travel_reactor/travelSeller/common/A00221268/f24516fc-7a84-4a5a-a900-a16629b786a8.jpg"
                 class="product-image"
                 alt="★한정수량★ [A].14시 2인 입장권 (주중/주말 공통)"
             >
