@@ -417,6 +417,33 @@ for display_rank, product in enumerate(selected_products, start=1):
         extra_cards += card_html
 
 
+extra_count = max(0, len(selected_products) - 10)
+
+if extra_count > 0:
+    extra_section = f"""
+    <button
+        class="extra-toggle"
+        type="button"
+        onclick="toggleExtra()"
+        id="extraToggle"
+    >
+        추가 특가 {extra_count}개 더보기
+    </button>
+
+    <div class="extra-products" id="extraProducts">
+        <div class="section-title">
+            골드박스 추가 특가
+        </div>
+        <div class="section-desc">
+            오늘 API에서 받은 상품 중 11위 이후 후보입니다.
+        </div>
+        {extra_cards}
+    </div>
+    """
+else:
+    extra_section = ""
+
+
 # =========================================================
 # 6. 전체 웹페이지 만들기
 # =========================================================
@@ -591,26 +618,7 @@ body {{
 
     {top_cards}
 
-    {f"""
-    <button
-        class="extra-toggle"
-        type="button"
-        onclick="toggleExtra()"
-        id="extraToggle"
-    >
-        추가 특가 {len(extra_cards) and max(0, len(selected_products) - 10) or 0}개 더보기
-    </button>
-
-    <div class="extra-products" id="extraProducts">
-        <div class="section-title">
-            골드박스 추가 특가
-        </div>
-        <div class="section-desc">
-            오늘 API에서 받은 상품 중 11위 이후 후보입니다.
-        </div>
-        {extra_cards}
-    </div>
-    """ if extra_cards else ""}
+    {extra_section}
 
 
     <div class="footer">
