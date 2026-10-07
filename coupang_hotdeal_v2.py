@@ -426,8 +426,9 @@ if extra_count > 0:
         type="button"
         onclick="toggleExtra()"
         id="extraToggle"
+        data-count="{extra_count}"
     >
-        추가 특가 {extra_count}개 더보기
+        🔥 오늘의 추가 특가 {extra_count}개 더보기 ↓
     </button>
 
     <div class="extra-products" id="extraProducts">
@@ -610,16 +611,27 @@ body {{
 
 .extra-toggle {{
     width: 100%;
-    border: 0;
-    background: #fff;
+    border: 2px solid #ffb300;
+    background: linear-gradient(135deg, #ffd43b, #ffb300);
     color: #111;
-    border-radius: 14px;
-    padding: 16px;
-    font-size: 15px;
-    font-weight: 800;
+    border-radius: 18px;
+    padding: 22px 18px;
+    font-size: 19px;
+    font-weight: 900;
     cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-    margin: 8px 0 18px;
+    box-shadow: 0 8px 22px rgba(255,179,0,0.30);
+    margin: 18px 0 26px;
+    text-align: center;
+    letter-spacing: -0.4px;
+}}
+
+.extra-toggle:hover {{
+    transform: translateY(-1px);
+    box-shadow: 0 12px 28px rgba(255,179,0,0.36);
+}}
+
+.extra-toggle:active {{
+    transform: translateY(0);
 }}
 
 .extra-products {{
@@ -712,9 +724,11 @@ function toggleExtra() {{
 
     const isOpen = box.classList.toggle("open");
 
+    const count = btn.getAttribute("data-count") || "";
+
     btn.textContent = isOpen
-        ? "추가 특가 접기"
-        : "추가 특가 더보기";
+        ? "추가 특가 접기 ↑"
+        : "🔥 오늘의 추가 특가 " + count + "개 더보기 ↓";
 
     if (!isOpen) {{
         btn.scrollIntoView({{ behavior: "smooth", block: "center" }});
