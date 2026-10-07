@@ -268,8 +268,8 @@ for product in products:
     product["_content_score"] = content_score
     product["_score"] = total_score
 # =========================================================
-# 판매용 TOP 10
-# 프로필 핫딜 페이지에 보여줄 상품
+# 판매용 TOP 30
+# 상단 TOP 10 + 추가 골드박스 최대 20개
 # =========================================================
 
 hotdeal_products = sorted(
@@ -278,7 +278,7 @@ hotdeal_products = sorted(
     reverse=True
 )
 
-selected_products = hotdeal_products[:10]
+selected_products = hotdeal_products[:30]
 
 
 # =========================================================
@@ -303,7 +303,7 @@ content_products = [
 
 
 print()
-print("=== 프로필 핫딜 TOP 10 ===")
+print("=== 프로필 핫딜 TOP 30 (TOP 10 + 추가 특가 최대 20) ===")
 
 for i, product in enumerate(selected_products, start=1):
 
@@ -331,7 +331,23 @@ for i, product in enumerate(content_products, start=1):
 
 print()
 cards = ""
-for product in selected_products:
+for display_rank, product in enumerate(selected_products, start=1):
+
+    if display_rank == 1:
+        cards += """
+        <div class="section-title">
+            오늘의 TOP 10
+        </div>
+        """
+    elif display_rank == 11:
+        cards += """
+        <div class="section-title extra">
+            골드박스 추가 특가
+        </div>
+        <div class="section-desc">
+            오늘 API에서 받은 상품 중 추가로 골라봤습니다.
+        </div>
+        """
 
     name = html.escape(str(product.get("productName", "")))
     category = html.escape(str(product.get("categoryName", "")))
@@ -545,7 +561,7 @@ body {{
         </div>
 
         <div class="date">
-            {today} 업데이트
+            {today} 업데이트 · TOP 10 + 추가 특가 최대 20개
         </div>
 
     </div>
