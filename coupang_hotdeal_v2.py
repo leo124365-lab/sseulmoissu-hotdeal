@@ -278,6 +278,7 @@ hotdeal_products = sorted(
     reverse=True
 )
 
+# HOTDEAL_DISPLAY_LIMIT = 30
 selected_products = hotdeal_products[:30]
 
 
