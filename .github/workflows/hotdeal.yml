@@ -3,6 +3,10 @@ name: Daily Coupang Hotdeal Update
 on:
   workflow_dispatch:
 
+  push:
+    paths:
+      - "coupang_hotdeal_v2.py"
+
   schedule:
     - cron: "10 0 * * *"
 
