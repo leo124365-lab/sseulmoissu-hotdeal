@@ -8,7 +8,10 @@ on:
       - "coupang_hotdeal_v2.py"
 
   schedule:
+    # KST 08:55 / 09:10 / 09:25 - GitHub scheduler delay 대비 3중 실행
+    - cron: "55 23 * * *"
     - cron: "10 0 * * *"
+    - cron: "25 0 * * *"
 
 permissions:
   contents: write
