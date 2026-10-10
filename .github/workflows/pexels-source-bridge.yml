@@ -9,25 +9,36 @@ permissions:
 jobs:
   retrieve:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - name: Download licensed stock footage
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p sources
-          curl --fail --location --retry 2 --connect-timeout 15 --max-time 130 \
-            -A 'Mozilla/5.0' \
-            -o sources/pexels_otters_7008043.mp4 \
-            'https://videos.pexels.com/video-files/7008043/7008043-hd_1920_1080_25fps.mp4'
+          curl --fail --location --retry 2 --connect-timeout 15 --max-time 130 -sS -A 'Mozilla/5.0' -o sources/pexels_otters_7008043.mp4 'https://videos.pexels.com/video-files/7008043/7008043-hd_1920_1080_25fps.mp4'
           file sources/pexels_otters_7008043.mp4
-          ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 sources/pexels_otters_7008043.mp4
           test "$(stat -c%s sources/pexels_otters_7008043.mp4)" -gt 100000
-          ffmpeg -v error -i sources/pexels_otters_7008043.mp4 -f null - 
+          for item in 'dogs|5728455|https://videos.pexels.com/video-files/5728455/5728455-hd_1080_1920_24fps.mp4' 'puppies|12768734|https://www.pexels.com/download/video/12768734/'; do
+            IFS='|' read -r name id url <<< "$item"
+            echo "Trying $name $id"
+            if curl --fail --location --connect-timeout 15 --max-time 150 -sS -A 'Mozilla/5.0' -o "sources/pexels_$name-$id.mp4" "$url"; then
+              file "sources/pexels_$name-$id.mp4"
+            else
+              echo "OPTIONAL_DOWNLOAD_FAILED $name"
+              rm -f "sources/pexels_$name-$id.mp4"
+            fi
+          done
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          for video in sources/*.mp4; do
+            echo "CHECK $video"
+            ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 "$video" || rm -f "$video"
+          done
       - name: Save media result
         uses: actions/upload-artifact@v4
         with:
-          name: pexels-otters-7008043
-          path: sources/pexels_otters_7008043.mp4
+          name: pexels-animal-source-clips
+          path: sources/*.mp4
           retention-days: 1
           if-no-files-found: error
