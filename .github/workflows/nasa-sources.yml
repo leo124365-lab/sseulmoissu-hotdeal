@@ -1,0 +1,23 @@
+name: Temporary NASA official source bridge
+on:
+  push:
+    branches: [shortform-nasa-source-20261010]
+    paths: ['.github/workflows/nasa-sources.yml']
+permissions:
+  contents: read
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install requests beautifulsoup4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: python nasa_space_sources.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nasa-three-space-footage
+          path: sources/
+          retention-days: 1
+          if-no-files-found: error
