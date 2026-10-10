@@ -1,0 +1,33 @@
+name: Temporary Pexels shortform source bridge
+on:
+  push:
+    branches: [shortform-pexels-bridge-20261010]
+    paths:
+      - '.github/workflows/pexels-source-bridge.yml'
+permissions:
+  contents: read
+jobs:
+  retrieve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Download licensed stock footage
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p sources
+          curl --fail --location --retry 2 --connect-timeout 15 --max-time 130 \
+            -A 'Mozilla/5.0' \
+            -o sources/pexels_otters_7008043.mp4 \
+            'https://videos.pexels.com/video-files/7008043/7008043-hd_1920_1080_25fps.mp4'
+          file sources/pexels_otters_7008043.mp4
+          ffprobe -v error -show_entries format=duration,size -of default=noprint_wrappers=1 sources/pexels_otters_7008043.mp4
+          test "$(stat -c%s sources/pexels_otters_7008043.mp4)" -gt 100000
+          ffmpeg -v error -i sources/pexels_otters_7008043.mp4 -f null - 
+      - name: Save media result
+        uses: actions/upload-artifact@v4
+        with:
+          name: pexels-otters-7008043
+          path: sources/pexels_otters_7008043.mp4
+          retention-days: 1
+          if-no-files-found: error
